@@ -1,0 +1,83 @@
+.form_phone_order {
+  position: relative;
+  color: #000;
+}
+
+.form_phone_order_block {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 290px;
+  box-sizing: border-box;
+}
+
+.form_phone_order_head {
+  border: solid 1px #060606;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.form_phone_order_title {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.form_phone_order_btn,
+.form_phone_order_input {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  list-style: none;
+  border: 0;
+  box-sizing: border-box;
+}
+
+.form_phone_order_btn {
+  text-align: center;
+  cursor: pointer;
+  display: inline-block;
+  height: 45px;
+  width: 12%;
+}
+
+.form_phone_order_input {
+  width: 85%;
+  padding-left: 15px;
+  border-top-left-radius: 5px;
+  height: 45px;
+  font-size: 18px;
+}
+
+.form_phone_order_scale {
+  position: relative;
+  height: 5px;
+  border-bottom-left-radius: 27px;
+  border-bottom-right-radius: 27px;
+  border: 1px solid #060606;
+  border-top: none;
+  box-sizing: border-box;
+}
+
+.form_phone_order_scale_active {
+  background: #060606;
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.form_phone_order_sub {
+  margin-top: 10px;
+  text-align: right;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 2.2px;
+  color: #060606;
+}
+
+.form_phone_order_img {
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
+}
+/*# sourceMappingURL=styles.css.map */
