@@ -1,10 +1,7 @@
 .form_phone_order {
-  position: relative;
   color: #000;
   &_block {
-    position: absolute;
-    top: 0;
-    left: 0;
+    margin: 0 auto;
     width: 290px;
     box-sizing: border-box;
   }
@@ -16,6 +13,7 @@
   &_title {
     text-transform: uppercase;
     font-weight: bold;
+    text-align: left;
   }
   &_btn, &_input {
     margin: 0;
@@ -31,6 +29,10 @@
     display: inline-block;
     height: 45px;
     width: 12%;
+    background-color: inherit;
+    &:disabled {
+      cursor: not-allowed;
+    }
   }
   &_input {
     width: 85%;
@@ -38,6 +40,7 @@
     border-top-left-radius: 5px;
     height: 45px;
     font-size: 18px;
+    background: inherit;
   }
   &_scale {
     position: relative;
@@ -66,6 +69,86 @@
     color: #060606;
   }
   &_img {
-    filter: invert(100%);
+    margin-bottom: -10%;
+  }
+}
+
+.cb {
+  &_text {
+    opacity: 0.5;
+    &_light {
+      color: #4a4a4a;
+    }
+  }
+  &_container {
+    display: inline-block;
+    position: relative;
+    padding-left: 18px;
+    margin-bottom: 12px;
+    margin-left: -1.2%;
+    cursor: pointer;
+    font-size: 10px;
+    user-select: none;
+    color: white;
+    font-weight: normal;
+    font-size: 11px;
+    letter-spacing: 0.2px;
+    &_light {
+      color: #060606;
+    }
+  }
+  /* Hide the browser's default checkbox */
+  &_container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  /* Create a custom checkbox */
+  &_checkmark {
+    position: absolute;
+    top: 1px;
+    left: 0;
+    height: 10px;
+    width: 10px;
+    background-color: white;
+    &_light {
+      background-color: #060606;
+    }
+  }
+  /* Create the checkmark/indicator (hidden when not checked) */
+  &_checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  /* Show the checkmark when checked */
+  &_container input:checked ~ &_checkmark:after {
+    display: block;
+    opacity: 1;
+  }
+  /* Style the checkmark/indicator */
+  &_container &_checkmark:after {
+    left: 30%;
+    top: 10%;
+    width: 3px;
+    height: 6px;
+    border: solid black;
+    border-width: 0 1px 1px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    opacity: 1;
+  }
+  &_container_light &_checkmark_light:after {
+    left: 30%;
+    top: 10%;
+    width: 3px;
+    height: 6px;
+    border: solid white;
+    border-width: 0 1px 1px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    opacity: 1;
   }
 }
