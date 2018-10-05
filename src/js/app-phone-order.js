@@ -6,93 +6,57 @@ Vue.component('app-phone-order', {
                     type: "text",
                     title: "имя",
                     name: "name",
-                    value: '',
                     pattern: /^[a-zA-Zа-яА-Я ]{3,30}$/,
-                    valid: false
-
                 },
                 {
                     type: "text",
                     title: "телефон",
                     name: "phone",
-                    value: '',
                     pattern: /^[0-9]{7,11}$/,
-                    valid: false
                 }
             ],
             checked: true,
             count: 0,
             maxcount: 1,
-            submit: true
+            submit: true,
         }
     },
     computed: {
         width() {
-            if (this.count == this.maxcount) {
-                this.submit = false;
-            }
             if (this.count > this.maxcount) {
                 this.count = this.maxcount;
             }
+            console.log(this.submit);
             return (this.count + 1) * 50 + '%';
         },
     },
     methods: {
-        onInput(index, value) {
-            let data = this.inputs[index];
-            data.value = value;
-            data.valid = data.pattern.test(value);
-        },
         up() {
             if (this.count >= 1) {
-                this.count = 1;
+                this.count = 0;
+                this.submit = true;
             } else {
                 this.count++;
+                this.submit= false;
             }
         },
-        check(i) {
-            return this.checked && this.inputs[i].valid;
-        },
-        submitDone(event) {
-            this.count = 0;
-            this.input = [
-                {
-                    type: "text",
-                    title: "имя",
-                    name: "name",
-                    value: '',
-                    pattern: /^[a-zA-Zа-яА-Я]{3,30}$/,
-                    valid: false
-                },
-                {
-                    type: "text",
-                    title: "телефон",
-                    name: "phone",
-                    value: '',
-                    pattern: /^[0-9]{7,11}$/,
-                    valid: false
-                }
-            ];
-        }
     },
-    template: `<div class="form_phone_order_block" @submit = "submitDone">
+    template: `<div class="form_phone_order_block">
         <div class="form_phone_order_title">{{inputs[count].title}}</div>
             <div class="form_phone_order_head">
             <input class="form_phone_order_input" 
                     :type="input.type" 
-                    :value="input.value"
-                    @input="onInput(index, $event.target.value)"
                     :name="input.name" v-for="(input, index) in inputs" :key="index" v-show="count == index">
-                <button class="form_phone_order_btn" v-if="submit" type="submit" @click.prevent="up()" :disabled="!check(0)">
+                <button class="form_phone_order_btn" v-if="submit" @click.prevent="up()" :disabled="!checked">
                 <img class="form_phone_order_img" src="./img/arrright_black.png" alt=""></button>
-                <button class="form_phone_order_btn" type="submit" v-else @click="up()" :disabled="!check(1)">
+                <button class="form_phone_order_btn" v-else @click="up()" :disabled="!checked">
                 <img class="form_phone_order_img" src="./img/arrright_black.png" alt=""></button>
             </div>
             <div class="form_phone_order_scale">
                 <div class="form_phone_order_scale_active" :style="{width: width}"></div>
             </div>
             <div class="form_phone_order_sub">0{{count+1}}/02</div>
-            <div class="get_email__row offset_top_down_m_18 offset_bot_down_p_124">
+            <div class="get_email__row offset_top_down_m_18">
                 <label class="cb_container cb_container_light">
                     <span class="cb_text_light">согласие на обработку персональных данных</span>
                     <input type="checkbox" @click="checked=!checked"  :checked="checked">

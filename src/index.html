@@ -7,11 +7,31 @@
 </head>
 <body>
 <div id="app">
-    <!--<form class="form_phone_order" action="">-->
-            <app-phone-order></app-phone-order>
-    <!--</form>-->
+    <form class="form_phone_order" action="">
+        <app-phone-order></app-phone-order>
+    </form>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/jquery.inputmask.bundle.min.js"></script>
+<script src="js/phone-ru.min.js"></script>
 <script src="js/app-phone-order.js"></script>
+<script>
+    window.onload = function () {
+        var inputmask = $("input[name='phone']");
+
+        console.log(inputmask);
+
+        Inputmask.extendDefinitions({
+            'f': {"validator": "[9\(\)\.\+/ ]"}
+        });
+
+        if (inputmask.length) {
+            inputmask.inputmask({
+                mask: "+7(f99)999-99-99"
+            });
+        }
+    }
+</script>
 </body>
 </html>
